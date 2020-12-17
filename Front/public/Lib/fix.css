@@ -1,0 +1,106 @@
+.logo-wrap .logo{
+    margin-left: 0 !important;
+    width:0px !important;
+}
+.logo-wrap h1{
+    font-size:18px !important;
+    text-align: center;
+    margin-left: 12px !important;
+}
+.el-menu li span{
+    font-family: 'iconfont';
+      src: url('iconfont.eot');
+      src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+      url('iconfont.woff') format('woff'),
+      url('iconfont.ttf') format('truetype'),
+      url('iconfont.svg#iconfont') format('svg');
+}
+.el-table__header tr,
+  .el-table__header th {
+    padding: 0;
+    height: 45px;
+    font-weight: bold;
+}
+.el-table__body tr,
+  .el-table__body td {
+    padding: 0;
+    height: 45px;
+    color:#545454;
+}
+/**表单的行间距调大了，原始为16**/
+.el-form-item{
+    margin-bottom: 24px!important;
+}
+
+/**表单前文字加粗去除**/
+label{
+  font-weight: normal;
+}
+
+/**表单背景色**/
+.el-table__header th{
+  background-color: #F1F2F4;
+  color: #0A1F44;
+}
+/**表格表头底线**/
+.el-table th.is-leaf {
+  border-bottom: 1px solid #D8DBE0;
+}
+
+/**弹窗圆角**/
+.el-dialog .el-dialog__header{
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+/**表单项 标题名称字体去加粗**/
+.el-form-item__label{
+  font-weight: normal;
+}
+
+/**表格 表头背景色更改**/
+.el-table th{
+  background-color: #F1F2F4 !important;
+  color:#001C41;
+}
+
+/**列表页中，表单与表格一起时，表格头 线条BUG 行与行之间错位**/
+.table-content{
+  margin-top: 4px;
+}
+
+/**修改input框高度**/
+.el-input__inner{
+  height: 32px !important;
+  line-height: 32px !important;
+}
+
+/**日期选择框中 分隔线水平居中设定**/
+.el-date-editor .el-range-separator{
+  margin-top:-8px !important;
+}
+
+/**标签圆角**/
+.tags-view-item{
+  border-radius: 3px;
+}
+
+/**表格中复选框样式**/
+.el-table__header .el-checkbox__inner{
+  margin-left: 4px;
+}
+.el-checkbox__inner{
+  width: 18px !important;
+  height: 18px !important;
+}
+.el-checkbox__inner::after{
+  top: 2px !important;
+  left: 6px !important;
+  font-weight: bold;
+}
+
+/**穿梭框标题错位修复**/
+.el-transfer-panel .el-transfer-panel__header .el-checkbox{
+  /*padding: 19px 0;  原设置*/
+  padding: 0px;
+}
