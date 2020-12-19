@@ -11,34 +11,16 @@
                 <el-input v-model="formData.c1"></el-input>
               </el-form-item>
               <el-form-item label="字段2" prop="c2">
-                <el-date-picker
-                  v-model="formData.c2"
-                  type="date"
-                  placeholder="选择日期">
-                </el-date-picker>
+                <el-input v-model="formData.c2"></el-input>
               </el-form-item>
               <el-form-item label="字段3" prop="c3">
-                <el-checkbox-group v-model="formData.c3">
-                  <el-checkbox label="复选框 A"></el-checkbox>
-                  <el-checkbox label="复选框 B"></el-checkbox>
-                  <el-checkbox label="复选框 C"></el-checkbox>
-                </el-checkbox-group>
+                <el-input v-model="formData.c3"></el-input>
               </el-form-item>
               <el-form-item label="字段4" prop="c4">
-                <el-radio-group v-model="formData.c4">
-                  <el-radio :label="1">备选项1</el-radio>
-                  <el-radio :label="2">备选项2</el-radio>
-                  <el-radio :label="3">备选项3</el-radio>
-                </el-radio-group>
+                <el-input v-model="formData.c4"></el-input>
               </el-form-item>
               <el-form-item label="字段5" prop="c5">
-                <el-select v-model="formData.c5" placeholder="请选择" clearable style="width: 320px">
-                  <el-option label="选项1" value="1"></el-option>
-                  <el-option label="选项2" value="2"></el-option>
-                  <el-option label="选项3" value="3"></el-option>
-                  <el-option label="选项4" value="4"></el-option>
-                  <el-option label="选项5" value="5"></el-option>
-                </el-select>
+                <el-input v-model="formData.c5"></el-input>
               </el-form-item>
               <el-form-item label="字段6" prop="c6">
                 <el-input v-model="formData.c6"></el-input>
@@ -75,9 +57,7 @@ export default {
     data(){
         return{
             //表单数据
-            formData:{
-              c3:[]
-            },
+            formData:{},
             //表单验证
             ruleForm:{
                 c1: [
@@ -104,7 +84,7 @@ export default {
     created() {
       if(this.rowData){
         this.formData = this.rowData
-        console.log(this.formData)
+        //console.log(this.formData)
       }
     },
     mounted(){
@@ -134,7 +114,7 @@ export default {
 </script>
 <style scoped>
   .el-input{
-    width: 320px;
+    width:320px;
   }
   .btn_right{
     text-align: right;
