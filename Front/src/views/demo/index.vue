@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import api from '@/api/agent' //引入member封装了的API
+  import api from '@/api/demo'
   import listForm from './blocks/listForm';
   import listTable from './blocks/listTable';
   export default {
@@ -24,9 +24,8 @@
       return {
         formData: {},
         tableList: {}, // 数据
-        selectData: [], //多选项
-        dateTime: '',
-        //重置分页作用
+
+        //初始分页
         page: {
           pageNo: 1,
           pageSize: 10
@@ -42,13 +41,13 @@
         this.formData = data;
         this.fetchData();
       },
+      //获取数据
       async fetchData() {
-        let res = await api.agentMember({ ...this.formData,
-          ...this.page,
-          queryType:'admin'
-        })
+        let res = await api.getDemoData({...this.formData, ...this.page,})
         if (res.code === 20000) {
           this.tableList = res.data
+        } else {
+          this.$message({message: res.message,type: 'error'})
         }
       }
     }

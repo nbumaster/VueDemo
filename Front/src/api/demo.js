@@ -1,32 +1,31 @@
 import request from '@/utils/request'
 
 export default {
-  addCode(data) {
+  addDemoData(data) {
     return request({
-      url: '/Api/codeManage/',
+      url: '/Api/demoDataManage/',
       method: 'post',
       data
     })
   },
-  getCode(data){
+  getDemoData(data){
     return request({
-      url: '/Api/codeManage/',
+      url: '/Api/demoDataManage/',
       method: 'get',
       params: { data }
     })
   },
-  getParentCode(data){
+  delDemoData(data){
     return request({
-      url: '/Api/codeManage/',
-      method: 'get',
-      params: { data }
-    })
-  },
-
-  delCode(data){
-    return request({
-      url: '/Api/codeManage/',
+      url: '/Api/demoDataManage/',
       method: 'delete',
+      data
+    })
+  },
+  saveRecord(data){
+    return request({
+      url: '/Api/saveRecord/',
+      method: 'post',
       data
     })
   }

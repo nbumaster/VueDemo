@@ -6,8 +6,7 @@
 </template>
 
 <script>
-import api from '@/api/agent'  //引入member封装了的API
-import api2 from '@/api/member'
+import api from '@/api/member'
 import listForm from './blocks/listForm';
 import listTable from './blocks/listTable';
 export default {
@@ -45,7 +44,7 @@ export default {
           this.fetchData();
       },
       async fetchData() {
-        let res = await api2.getAdmin({...this.formData, ...this.page})
+        let res = await api.getAdmin({...this.formData, ...this.page})
         if (res.code === 20000) {
           this.tableList = res.data
         }

@@ -6,12 +6,12 @@
                     <div style="float: left;">
                         <el-button @click="resetForm" size="small">重置</el-button>
                         <el-button type="primary" @click="search" size="small">查询</el-button>
-                       <!-- <com-ocj-dialog title="新增员工帐号" width="60%" style="margin:0px 10px" :outClose="false">
-                            <el-button type="success" size="small">新增员工帐号</el-button>
+                       <com-ocj-dialog title="添加帐号" width="60%" style="margin:0px 10px" :outClose="false">
+                            <el-button type="success" size="small">添加帐号</el-button>
                             <template #contain>
                                 <edit-member></edit-member>
                             </template>
-                        </com-ocj-dialog> -->
+                        </com-ocj-dialog>
                     </div>
                 </template>
             </com-ocj-form-item>

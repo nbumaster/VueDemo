@@ -64,9 +64,6 @@ export default {
           column:[ //表格页头
               { index :'序号',width:'50px'},
               { username :'用户名'},
-              { codeKey__code :'绑定邀请码'},
-              // { name :'姓名'},
-              // { rolesKey__name :'角色'},
               { info_datetime :'创建日期'}
           ],
         };

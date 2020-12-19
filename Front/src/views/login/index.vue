@@ -115,9 +115,7 @@ export default {
           this.$store.dispatch('user/login', this.loginForm).then((res) => {
             this.createRouter(res.data.authItems)
             localStorage.setItem('username', res.data.userInfo.username)
-            localStorage.setItem('level', res.data.userInfo.level)
             localStorage.setItem('name',res.data.userInfo.name)
-            localStorage.setItem('codeKey_id', res.data.userInfo.codeKey_id)
             this.$router.push({ path:'/dashboard'})
             this.loading = false
           }).catch(() => {

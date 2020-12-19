@@ -48,6 +48,16 @@ export const noMenuRoutes = [
       meta: { title: '控制台', icon: 'el-icon-s-help' }
     }]
   },
+  {
+    path: '/modifyPassword',
+    component: Layout,
+    children: [{
+      path: '/modifyPassword',
+      name: '修改密码',
+      component: () => import('@/views/modifyPassword'),
+      meta: { title: '修改密码', icon: 'el-icon-s-custom' }
+    }]
+  }
 ]
 
 /**
@@ -55,13 +65,13 @@ export const noMenuRoutes = [
  */
 export const constantRoutes = [
   {
-    path: '/agentCheck',
+    path: '/demo',
     component: Layout,
     children: [{
-      path: '/agentCheck',
-      name: '菜单项',
-      component: () => import('@/views/agentCheck'),
-      meta: { title: '菜单项', icon: 'el-icon-user-solid' }
+      path: '/demo',
+      name: '示例菜单',
+      component: () => import('@/views/demo'),
+      meta: { title: '示例菜单', icon: 'el-icon-user-solid' }
     }]
   },
   {
