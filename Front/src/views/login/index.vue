@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
 
       <div class="title-container">
-        <h3 class="title">合作商管理中心</h3>
+        <h3 class="title">管理中心</h3>
       </div>
 
       <el-form-item prop="username">
@@ -189,7 +189,7 @@ $light_gray:#eee;
   width: 100%;
   background-color: $bg;
   overflow: hidden;
-  background: url('../../assets/bga.gif') no-repeat center center;
+  //background: url('../../assets/bga.gif') no-repeat center center;
   background-size:cover;
   background-attachment:fixed;
 

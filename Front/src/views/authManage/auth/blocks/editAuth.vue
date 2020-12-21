@@ -111,7 +111,7 @@
             rows: 3,
             prop: 'content',
             label: '备注说明',
-            placeholder: '请输入姓名',
+            placeholder: '请输入备注说明',
             width: '320px'
           },
           {

@@ -34,7 +34,7 @@ export default {
                 pageSize: 10
             },
             config:[
-                {itemType:"input",prop:"name",label:"字段"},
+                {itemType:"input",prop:"keyword",label:"字段"},
                 {itemType:'',prop:'searchProduct',label:'',hasSlot:true,span:2}
             ],
         };

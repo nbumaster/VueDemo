@@ -4,15 +4,12 @@
             <com-ocj-form-item :column="4" :form="queryData" :config="config" clearable>
                 <template #searchProduct>
                     <div style="float: left;">
-                        <el-button @click="resetForm" size="small">重置</el-button>
-                        <el-button type="primary" @click="search" size="small">查询</el-button>
-                        <com-ocj-dialog title="新增权限" width="60%" style="margin:0px 10px">
+                        <com-ocj-dialog title="新增权限" width="60%">
                           <el-button type="success" size="small">新增权限</el-button>
                           <template #contain>
                               <editAuth></editAuth>
                           </template>
                         </com-ocj-dialog>
-                        <el-button type="danger" @click="handleDelete" size="small">批量删除</el-button>
                     </div>
                 </template>
             </com-ocj-form-item>
@@ -34,14 +31,14 @@ export default {
                 pageSize: 10
             },
             config:[
-                {itemType:'input',prop:'name',label:'权限名称',placeholder:'请输入权限名称'},
-                {itemType:'input',prop:'p_code',label:'标识',placeholder:'请输入标识'},
-                {itemType:'input',prop:'p_code',label:'请求地址',placeholder:'请输入请求地址'},
-                {itemType:'select',prop:'plan_state',label:'类型',placeholder:'请选择', width:'100px',
-                    list:[
-                        {label:'目录',value:'0'},{label:'菜单',value:'1'},{label:'按钮',value:'2'}
-                    ],
-                },
+                // {itemType:'input',prop:'name',label:'权限名称',placeholder:'请输入权限名称'},
+                // {itemType:'input',prop:'p_code',label:'标识',placeholder:'请输入标识'},
+                // {itemType:'input',prop:'p_code',label:'请求地址',placeholder:'请输入请求地址'},
+                // {itemType:'select',prop:'plan_state',label:'类型',placeholder:'请选择', width:'100px',
+                //     list:[
+                //         {label:'目录',value:'0'},{label:'菜单',value:'1'},{label:'按钮',value:'2'}
+                //     ],
+                // },
                 {itemType:'',prop:'searchProduct',label:'',hasSlot:true,span:2}
             ],
         };

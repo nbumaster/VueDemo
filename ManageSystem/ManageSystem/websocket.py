@@ -1,7 +1,5 @@
 # -*- coding:utf-8 -*-
-import subprocess, os, django, json
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ManageSystem.settings')
-# django.setup()
+import subprocess, json
 
 async def websocket_application(scope, receive, send):
     while True:

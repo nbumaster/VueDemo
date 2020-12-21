@@ -1,8 +1,9 @@
 # -*- coding:utf-8 -*-
+from django.db.models import Q
 from django.http import JsonResponse
 from web.models import *
-import json
 from django.views.generic import View
+import json
 
 def getPageRecord(items, pageNo, pageSize):
     startRecord = (pageNo - 1) * pageSize + 1
@@ -396,24 +397,6 @@ class getAuthsTree(View):
 
         return JsonResponse(json_info)
 
-class getAuthList(View):
-    def json_info(self, message, code, add_data=[], total=0, extra=''):
-        json_data = {'message': message, 'code': code, 'data': {"items": add_data, 'total': total, 'extra': extra}}
-        return json_data
-
-    def get(self, request):
-        try:
-            req_data = request.GET.get('data')
-            data = json.loads(req_data)
-            id = data.get('id')
-            items = RolesToAuthos.objects.filter(rolesKey_id=id).values('authosKey_id')
-            return_items = list(items)
-            json_info = self.json_info(message='查询成功！', code=20000, add_data=return_items, total=items.count())
-        except Exception as e:
-            json_info = self.json_info(message=str(e), code=40000)
-
-        return JsonResponse(json_info)
-
 class demoDataManage(View):
     def json_info(self, message, code, add_data=[], total=0, extra=''):
         json_data = {'message': message, 'code': code, 'data': {"items": add_data, 'total': total, 'extra': extra}}
@@ -427,11 +410,11 @@ class demoDataManage(View):
             items = DemoData.objects.values().order_by('-id')
 
             if keyword:
-                items = items.filter(username__icontains=keyword)
+                items = items.filter(Q(c1__icontains=keyword) | Q(c2__icontains=keyword))
 
-            return_items = getPageRecord(items, data['pageNo'], data['pageSize'])  # 分页数据处理
+            responseItems = getPageRecord(items, data['pageNo'], data['pageSize'])  # 分页数据处理
 
-            json_info = self.json_info(message='查询成功！', code=20000, add_data=return_items, total=items.count())
+            json_info = self.json_info(message='查询成功！', code=20000, add_data=responseItems, total=items.count())
         except Exception as e:
             json_info = self.json_info(message=str(e), code=40000)
 
@@ -475,56 +458,6 @@ class demoDataManage(View):
 
         return JsonResponse(json_info)
 
-    class demoDataManage(View):
-        def json_info(self, message, code, add_data=[], total=0, extra=''):
-            json_data = {'message': message, 'code': code, 'data': {"items": add_data, 'total': total, 'extra': extra}}
-            return json_data
-
-        def get(self, request):
-            try:
-                req_data = request.GET.get('data')
-                data = json.loads(req_data)
-                keyword = data.get('keyword')
-                items = DemoData.objects.values().order_by('-id')
-
-                if keyword:
-                    items = items.filter(username__icontains=keyword)
-
-                return_items = getPageRecord(items, data['pageNo'], data['pageSize'])  # 分页数据处理
-
-                json_info = self.json_info(message='查询成功！', code=20000, add_data=return_items, total=items.count())
-            except Exception as e:
-                json_info = self.json_info(message=str(e), code=40000)
-
-            return JsonResponse(json_info)
-
-        def post(self, request):
-            try:
-                data = json.loads(request.body)
-                id = data.get('id')
-                formData = {
-                    'c1': data.get('c1'),
-                    'c2': data.get('c2'),
-                    'c3': data.get('c3'),
-                    'c4': data.get('c4'),
-                    'c5': data.get('c5'),
-                    'c6': data.get('c6'),
-                    'c7': data.get('c7'),
-                    'c8': data.get('c8'),
-                    'c9': data.get('c9')
-                }
-
-                if id:
-                    DemoData.objects.filter(id=id).update(**formData)
-                else:
-                    DemoData.objects.create(**formData)
-
-                json_info = self.json_info(message='保存成功！', code=20000)
-            except Exception as e:
-                json_info = self.json_info(message=str(e), code=40000)
-
-            return JsonResponse(json_info)
-
 class saveRecord(View):
     def json_info(self, message, code, add_data=[], total=0, extra=''):
         json_data = {'message': message, 'code': code, 'data': {"items": add_data, 'total': total, 'extra': extra}}
@@ -538,7 +471,7 @@ class saveRecord(View):
             ExcuteRecord.objects.create(data=recordInfo) #保存执行日志
             DemoData.objects.filter(id=id).update(state=2)  #更新数据状态为“执行成功”
 
-            json_info = self.json_info(message='保存成功！', code=20000)
+            json_info = self.json_info(message='保存日志成功！', code=20000)
         except Exception as e:
             json_info = self.json_info(message=str(e), code=40000)
 

@@ -1,19 +1,12 @@
 module.exports = {
 
-  title: '合作商分管系统',
+  //页面标题
+  title: '管理后台',
 
-  /**
-   * @type {boolean} true | false
-   * @description Whether fix the header
-   */
+  //是否将顶部固定, true | false
   fixedHeader: true,
 
-  /**
-   * @type {boolean} true | false
-   * @description Whether show the logo in sidebar
-   */
+  //是否显示顶部LOGO区域, true | false
   sidebarLogo: true,
-
-  // 顶部标签标显示
-  tagsView: true
+  
 }
