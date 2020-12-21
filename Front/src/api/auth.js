@@ -15,12 +15,13 @@ export default {
       params: { data }
     })
   },
+  //删除权限
+  delete(data){
+    return request({
+      url: '/Api/auth/',
+      method: 'delete',
+      data
+    })
+  },
 
-  // modifyPassword(data){
-  //   return request({
-  //     url: '/Api/member/',
-  //     method: 'put',
-  //     data
-  //   })
-  // },
 }

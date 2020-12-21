@@ -298,6 +298,18 @@ class auth(View):
 
         return JsonResponse(json_info)
 
+    def delete(self, request):
+        try:
+            data = json.loads(request.body)
+            id = data.get('id')
+            Auths.objects.filter(id=id).delete()
+
+            json_info = self.json_info(message='删除成功！', code=20000)
+        except Exception as e:
+            json_info = self.json_info(message=str(e), code=40000)
+
+        return JsonResponse(json_info)
+
 class rolesManage(View):
     def json_info(self, message, code, add_data=[], total=0, extra=''):
         json_data = {'message': message, 'code': code, 'data': {"items": add_data, 'total': total, 'extra': extra}}

@@ -6,7 +6,7 @@
           :showOperation="true"
           operationWidth="140px"
           :showSlots="['index','auth_type']"
-          :checkbox="true"
+          :checkbox="false"
           stripe
           >
           <template #index='scope'>

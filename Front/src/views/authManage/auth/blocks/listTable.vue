@@ -6,7 +6,7 @@
           :showOperation="true"
           operationWidth="140px"
           :showSlots="['index','auth_type']"
-          :checkbox="true"
+          :checkbox="false"
           stripe
           >
           <template #index='scope'>
@@ -24,8 +24,7 @@
                   <editAuth :rowData="rowData"></editAuth>
               </template>
             </com-ocj-dialog>
-
-            <el-link type="danger" size="mini" style="margin-left:15px">删除</el-link>
+            <el-link type="danger" size="mini" style="margin-left:15px" @click="handleDelete(scope.row)">删除</el-link>
           </template>
         </com-ocj-table>
         <com-ocj-pager :page="pager" :total="tableList.total" @change="changePage" />
@@ -33,9 +32,11 @@
 </template>
 
 <script>
+import api from '@/api/auth'
 import editAuth from './editAuth'
 export default {
     name : "listTable",
+    inject:['index'],
     components:{editAuth},
     props:{
         tableList:{
@@ -87,21 +88,11 @@ export default {
                 console.log('cancel');
             });
         },
-        //  删除
-        async delete(id) {
-            var parms = this.$qs.stringify({
-                id: id,
-            });
-            this.axios.delete('/Api/barCodeQuery/', {data: parms}).then((res) => {
-                var msg = res.data.msg;
-                if (msg === 'ok') {
-                    this.$message.success("操作成功！");
-                    this.$router.replace('/refresh');
-                } else {
-                    this.$message.error('操作失败！');
-                }
-            });
-        },
+        async delete(id){
+          let res = await api.delete({'id':id})
+          this.$message({message: res.message,type: res.code === 20000 ? 'success' : 'error'})
+          this.index.fetchData()  //亮点：穿透N层调用父父父级组件中的方法
+        }
     }
 };
 </script>

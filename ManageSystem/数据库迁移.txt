@@ -14,5 +14,10 @@ set charset utf8;
 
 source managesystem.sql;
 
+
+ASGI请求后端报：Unsupported upgrade request.  重新安装uvicorn标准版
+pip uninstall uvicorn
+pip install uvicorn[standard]
+
 asgi启动
 uvicorn --host 0.0.0.0 ManageSystem.asgi:application
